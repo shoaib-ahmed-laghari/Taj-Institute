@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taj Institute - Gallery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="./images/original logo.png">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #eef2f5;
+        }
+
+        #stick {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            background: #2b6777;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+
+        .nav-link {
+            color: #d4ebeb !important;
+        }
+
+        .nav-link.active,
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1742497360062-c5f15b7b5e8d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzJTIwZm9yJTIwaGVybyUyMHNlY3Rpb258ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(43, 103, 119, 0.6);
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        /* Carousel */
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            padding: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3d40;
+            color: white;
+            padding: 50px 0;
+        }
+
+        footer h5 {
+            color: #ffffff;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .carousel-item img {
+                height: 250px;
+            }
+
+            .gallery-item img {
+                height: 150px;
+            }
+        }
+
+        footer {
+            background-color: #1f3d40;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        footer h5 {
+            color: #ffffff;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #007bff;
+        }
+
+        footer {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg");
+            background-size: cover;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .filter-btn.active {
+            background-color: #2b6777;
+            color: white;
+        }
+
+        .gallery-item {
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item {
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item::before {
+            content: "View Photo";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(43, 103, 119, 0.8);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 2;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(70%);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="stick">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./images/original logo.png" alt="Taj Institute Logo" style="width: 40px; margin-right: 10px;">
+                Taj Institute
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link " href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Photo & Event Gallery</h1>
+            <p>Explore memorable moments and campus activities at Taj Institute</p>
+        </div>
+    </section>
+    <div class="container text-center my-4">
+        <button class="btn btn-outline-secondary filter-btn active" data-filter="all">All</button>
+        <button class="btn btn-outline-secondary filter-btn" data-filter="events">Events</button>
+        <button class="btn btn-outline-secondary filter-btn" data-filter="labs">Labs</button>
+    </div>
+
+    <div class="container my-5">
+        <!-- Carousel -->
+        <div id="galleryCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://plus.unsplash.com/premium_photo-1706548911887-791ddf52ac48?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzJTIwZm9yJTIwY3JvdXNlbHxlbnwwfHwwfHx8MA%3D%3D"
+                        class="d-block w-100" alt="Event Seminar">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1690295720095-edaddabc44d1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzJTIwZm9yJTIwY3JvdXNlbHxlbnwwfHwwfHx8MA%3D%3D"
+                        class="d-block w-100" alt="Classroom Session">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1649935767507-7ec07394eefd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGluc3RpdHV0ZSUyMCUyMGdhbGxlcnklMjBwaWN0dXJlcyUyMGZvciUyMGNyb3VzZWx8ZW58MHx8MHx8fDA%3D"
+                        class="d-block w-100" alt="Student Activities">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <h2 class="text-center mb-4">Campus Photos</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/graduation.jpg">
+                        <img src="https://images.unsplash.com/photo-1593103499244-6c882f0163cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzfGVufDB8fDB8fHww"
+                            alt="Graduation Ceremony">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/lab.jpg">
+                        <img src="https://images.unsplash.com/photo-1690295720095-edaddabc44d1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzfGVufDB8fDB8fHww"
+                            alt="Lab Work">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/group.jpg">
+                        <img src="https://images.unsplash.com/photo-1585950483336-8d59d18e0ffe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzfGVufDB8fDB8fHww"
+                            alt="Group Study">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/work.jpg">
+                        <img src="https://plus.unsplash.com/premium_photo-1758653024876-bc3f2b4b9601?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzfGVufDB8fDB8fHww"
+                            alt="Workshop">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/view.jpg">
+                        <img src="https://images.unsplash.com/photo-1744641405608-4a58f14d07b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzfGVufDB8fDB8fHww"
+                            alt="Campus View">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/presentation.jpg">
+                        <img src="https://plus.unsplash.com/premium_photo-1704650031918-0ce8ce7cdb4d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8aW5zdGl0dXRlJTIwJTIwZ2FsbGVyeSUyMHBpY3R1cmVzfGVufDB8fDB8fHww"
+                            alt="Project Presentation">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/library.jpg">
+                        <img src="https://images.unsplash.com/photo-1742497360373-a399f83ec432?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGluc3RpdHV0ZSUyMCUyMGdhbGxlcnklMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D"
+                            alt="Library">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                        data-img="./images/sport.jpg">
+                        <img src="https://plus.unsplash.com/premium_photo-1706548911842-7162d4bd2c98?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGluc3RpdHV0ZSUyMCUyMGdhbGxlcnklMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D"
+                            alt="Sports Day">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0">
+                    <img src="" id="lightboxImage" class="img-fluid rounded" alt="Gallery Image">
+                </div>
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center text-lg-start">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone"></i> +92 123 4567890</p>
+                    <p><i class="fas fa-envelope"></i> info@tajinstitute.com</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Address</h5>
+                    <p>Taj Institute of Information Technology<br>Sukkur, Sindh, Pakistan</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center">&copy; 2025 Taj Institute. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const lightboxModal = document.getElementById('lightboxModal');
+        lightboxModal.addEventListener('show.bs.modal', event => {
+            const img = event.relatedTarget.getAttribute('data-img');
+            document.getElementById('lightboxImage').src = img;
+        });
+    </script>
+    <script>
+        const lightboxModal = document.getElementById('lightboxModal');
+        lightboxModal.addEventListener('show.bs.modal', event => {
+            // Click hone wali item se image ka source (src) nikalna
+            const triggerItem = event.relatedTarget;
+            const imgSource = triggerItem.querySelector('img').src;
+            const modalImage = document.getElementById('lightboxImage');
+
+            // Modal ki image ko source assign karna
+            modalImage.src = imgSource;
+        });
+    </script>
+</body>
+
+</html>
