@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taj Institute - Faculty</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="./images/original logo.png">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #eef2f5;
+        }
+
+        #stick {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            background: #2b6777;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+
+        .nav-link {
+            color: #d4ebeb !important;
+        }
+
+        .nav-link.active,
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1747836130078-d62d15c79c30?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGluc3RpdHV0ZSUyMCUyMHBpY3R1cmUlMjBmb3IlMjBmYWN1bHR5JTIwaGVybyUyMHNlY3Rpb258ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(43, 103, 119, 0.6);
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        /* Faculty Cards */
+        .faculty-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .faculty-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3d40;
+            color: white;
+            padding: 50px 0;
+        }
+
+        footer a {
+            color: #d4ebeb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #1f3d40;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        footer h5 {
+            color: #ffffff;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #007bff;
+        }
+
+        footer {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg");
+            background-size: cover;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .faculty-card img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="stick">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./images/original logo.png" alt="Taj Institute Logo" style="width:40px; margin-right:10px;">
+                Taj Institute
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="faculty.html">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Meet Our Expert Faculty</h1>
+            <p>Dedicated professionals guiding your IT education journey at Taj Institute.</p>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Our Faculty Members</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- Faculty Card 1 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://images.unsplash.com/photo-1651684215020-f7a5b6610f23?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+                        class="card-img-top" alt="Faculty 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Mr. Ahmed Khan</h5>
+                        <p class="card-text">Web Development Expert with 10+ years of industry experience.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 2 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://media.istockphoto.com/id/2205394799/photo/smiling-female-scientist.webp?a=1&b=1&s=612x612&w=0&k=20&c=ie5HZeGR9H7R20-Q35BpDWBkuVV7eF8KHtLfmKn2ZgE="
+                        class="card-img-top" alt="Faculty 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Ms. Sana Ali</h5>
+                        <p class="card-text">Data Scientist and AI Specialist guiding students on machine learning
+                            projects.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 3 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+                        class="card-img-top" alt="Faculty 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Mr. Imran Raza</h5>
+                        <p class="card-text">Cyber Security professional with expertise in ethical hacking and network
+                            security.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 4 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww"
+                        class="card-img-top" alt="Faculty 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Ms. Hina Shah</h5>
+                        <p class="card-text">Cloud Computing and DevOps trainer with hands-on experience in AWS and
+                            Azure.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 5 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGVyc29ufGVufDB8fDB8fHww"
+                        class="card-img-top" alt="Faculty 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Mr. Bilal Qureshi</h5>
+                        <p class="card-text">Mobile App Development specialist with expertise in Flutter and React
+                            Native.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 6 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+                        class="card-img-top" alt="Faculty 6">
+                    <div class="card-body">
+                        <h5 class="card-title">Ms. Zara Ahmed</h5>
+                        <p class="card-text">AI and Machine Learning professional working on neural networks and
+                            computer vision.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 7 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1689539137236-b68e436248de?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fHww"
+                        class="card-img-top" alt="Faculty 7">
+                    <div class="card-body">
+                        <h5 class="card-title">Mr. Faisal Rafiq</h5>
+                        <p class="card-text">Software Engineering and Project Management expert with 12+ years of
+                            experience.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 8 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1688572454849-4348982edf7d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+                        class="card-img-top" alt="Faculty 8">
+                    <div class="card-body">
+                        <h5 class="card-title">Ms. Nadia Khan</h5>
+                        <p class="card-text">Database Management trainer with expertise in SQL, NoSQL, and data
+                            architecture.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Faculty Card 9 -->
+            <div class="col">
+                <div class="card faculty-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1689629870780-5d0e655383e6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+                        class="card-img-top" alt="Faculty 9">
+                    <div class="card-body">
+                        <h5 class="card-title">Mr. Kamran Iqbal</h5>
+                        <p class="card-text">Blockchain and Cryptocurrency expert guiding students on decentralized
+                            systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center text-lg-start">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone"></i> +92 123 4567890</p>
+                    <p><i class="fas fa-envelope"></i> info@tajinstitute.com</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Address</h5>
+                    <p>Taj Institute of Information Technology<br>Sukkur, Sindh, Pakistan</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center">&copy; 2025 Taj Institute. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 1. Image Animation on Hover
+        // Jab user kisi teacher ki picture par mouse le jaye toh wo thori zoom ho jaye
+        const facultyCards = document.querySelectorAll('.faculty-card');
+
+        facultyCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const img = card.querySelector('img');
+                img.style.transition = "transform 0.5s ease";
+                img.style.transform = "scale(1.1)";
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const img = card.querySelector('img');
+                img.style.transform = "scale(1)";
+            });
+        });
+
+        // 2. Click for Quick Details
+        // Jab user kisi teacher ke card par click kare toh aik chota sa intro message aaye
+        facultyCards.forEach(card => {
+            card.style.cursor = "pointer";
+            card.addEventListener('click', function () {
+                const name = this.querySelector('.card-title').innerText;
+                const expertise = this.querySelector('.card-text').innerText;
+
+                // Aap yahan Modal (Popup) bhi trigger kar sakte hain
+                alert("Faculty Member: " + name + "\nExpertise: " + expertise + "\n\nInse milne ke liye Monday se Friday academic office tashreef layein.");
+            });
+        });
+
+        // 3. Scroll Reveal Effect
+        // Page load hote waqt cards aik aik karke samne aayenge
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }, index * 150); // Delay taake sequence mein aayein
+                }
+            });
+        }, { threshold: 0.1 });
+
+        facultyCards.forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(50px)";
+            card.style.transition = "all 0.6s ease-out";
+            observer.observe(card);
+        });
+    });
+</script>
+
+</html>
