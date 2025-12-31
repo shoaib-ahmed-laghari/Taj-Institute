@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taj Institute - Courses</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="./images/original logo.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #eef2f5;
+            line-height: 1.7;
+        }
+
+        #stick {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            background: #2b6777;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+
+        .nav-link {
+            color: #d4ebeb !important;
+        }
+
+        .nav-link.active,
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: url('https://plus.unsplash.com/premium_photo-1682787494765-44d02d12f5be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGluc3RpdHV0ZSUyMCUyMHBpY3R1cmUlMjBmb3IlMjBoZXJvJTIwc2VjdGlvbiUyMGNvdXJzZXN8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-section .btn {
+            background: #ff6b6b;
+            border: none;
+            padding: 10px 25px;
+            font-weight: bold;
+        }
+
+        .hero-section .btn:hover {
+            background: #ff4757;
+        }
+
+        /* Course Cards */
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card img {
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #2b6777;
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2b6777;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .btn-read-more {
+            background-color: #2b6777;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-read-more:hover {
+            background-color: #1a3f50;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3d40;
+            color: white;
+            padding: 50px 0;
+        }
+
+        footer a {
+            color: #d4ebeb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #1f3d40;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        footer h5 {
+            color: #ffffff;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #007bff;
+        }
+
+        footer {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg");
+            background-size: cover;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .course-card img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="stick">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./images/original logo.png" alt="Taj Institute Logo" style="width: 40px; margin-right: 10px;">
+                Taj Institute
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content container">
+            <h1>Explore Our IT Courses</h1>
+            <p>Hands-on training & expert guidance to build your career in IT.</p>
+            <a href="#courses" class="btn btn-lg">View Courses</a>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="container my-5" id="courses">
+        <div class="text-center mb-5">
+            <h2>Our Featured IT Courses</h2>
+            <p>Choose from a variety of courses designed to make you industry-ready.</p>
+        </div>
+        <div class="container mb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <input type="text" id="courseSearch" class="form-control"
+                        placeholder="Search for a course (e.g. Web, Python)...">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Course 1 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1669023414162-5bb06bbff0ec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGV2ZWxvcG1lbnQlMjBjb3Vyc2UlMjBwaWN0dXJlfGVufDB8fDB8fHww"
+                        alt="Web Development">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Development</h5>
+                        <p class="card-text">HTML, CSS, JavaScript & React for building modern responsive websites.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 2 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1661878265739-da90bc1af051?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGF0YXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Data Science">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Science</h5>
+                        <p class="card-text">Python, R, Machine Learning & Data Visualization for analytical skills.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 3 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://media.istockphoto.com/id/2195684944/photo/high-tech-data-center-with-server-racks.webp?a=1&b=1&s=612x612&w=0&k=20&c=ReD7qtR8PTIuUZJrrKuvBFaB1l7bM6DU_Z6IubLg8Mk="
+                        alt="Cyber Security">
+                    <div class="card-body">
+                        <h5 class="card-title">Cyber Security</h5>
+                        <p class="card-text">Ethical hacking, network security & threat analysis to secure systems.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 4 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1667984390538-3dea7a3fe33d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWQlMjBjb21wdXRpbmd8ZW58MHx8MHx8fDA%3D"
+                        alt="Cloud Computing">
+                    <div class="card-body">
+                        <h5 class="card-title">Cloud Computing</h5>
+                        <p class="card-text">AWS, Azure & Google Cloud for scalable, modern infrastructure solutions.
+                        </p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 5 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1682310036718-d89810060386?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bW9iaWxlJTIwYXBwJTIwZGV2ZWxvcG1lbnR8ZW58MHx8MHx8fDA%3D"
+                        alt="Mobile App Development">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobile App Development</h5>
+                        <p class="card-text">Build Android & iOS apps using Flutter and React Native.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 6 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://media.istockphoto.com/id/2170889984/photo/digital-abstract-cpu-ai-artificial-intelligence-and-machine-learning-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=zGSV2_Jth30uGNDD7g-XV-nJTxRL2HH2O3qJH7T3AV4="
+                        alt="AI & Machine Learning">
+                    <div class="card-body">
+                        <h5 class="card-title">AI & Machine Learning</h5>
+                        <p class="card-text">Deep learning, neural networks & AI algorithms for advanced tech.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 7 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c29mdHdhcmUlMjBlbmdpbmVlcnxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Software Engineering">
+                    <div class="card-body">
+                        <h5 class="card-title">Software Engineering</h5>
+                        <p class="card-text">Software design, development methodologies & project management skills.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 8 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://media.istockphoto.com/id/1342186559/photo/a-business-man-using-a-computer-to-manage-documents-online-document-communication-database.webp?a=1&b=1&s=612x612&w=0&k=20&c=XQFDCEeEbTZpWLHoL6p_dkRYATnL4E5mxJyZObip5tQ="
+                        alt="Database Management">
+                    <div class="card-body">
+                        <h5 class="card-title">Database Management</h5>
+                        <p class="card-text">SQL, NoSQL & database design for efficient data handling.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Course 9 -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1666816943035-15c29931e975?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvY2tjaGFpbiUyMHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
+                        alt="Blockchain Technology">
+                    <div class="card-body">
+                        <h5 class="card-title">Blockchain Technology</h5>
+                        <p class="card-text">Decentralized systems, cryptocurrencies & smart contracts.</p>
+                        <button class="btn btn-read-more">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center text-lg-start">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone"></i> +92 123 4567890</p>
+                    <p><i class="fas fa-envelope"></i> info@tajinstitute.com</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Address</h5>
+                    <p>Taj Institute of Information Technology<br>Sukkur, Sindh, Pakistan</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center">&copy; 2025 Taj Institute. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('courseSearch');
+            const courseCards = document.querySelectorAll('.course-card');
+
+            // 1. Live Search Logic
+            searchInput.addEventListener('keyup', function () {
+                const searchText = searchInput.value.toLowerCase();
+
+                courseCards.forEach(card => {
+                    const title = card.querySelector('.card-title').innerText.toLowerCase();
+                    const description = card.querySelector('.card-text').innerText.toLowerCase();
+
+                    // Agar title ya description mein search text milta hai
+                    if (title.includes(searchText) || description.includes(searchText)) {
+                        card.parentElement.style.display = "block"; // Card dikhao
+                    } else {
+                        card.parentElement.style.display = "none";  // Card chhupao
+                    }
+                });
+            });
+
+            // 2. Read More Button Alert
+            // Har button par click karne se aik popup aayega
+            const readMoreBtns = document.querySelectorAll('.btn-read-more');
+            readMoreBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const courseName = this.parentElement.querySelector('.card-title').innerText;
+                    alert("Aapne " + courseName + " course select kiya hai. Details ke liye humse Contact page par rabta karein!");
+                });
+            });
+
+            // 3. Smooth Scroll to Courses
+            document.querySelector('a[href="#courses"]').addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector('#courses').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
